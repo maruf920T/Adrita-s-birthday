@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>শুভ জন্মদিন</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
     <style>
         body {
@@ -12,30 +12,57 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-pink-400 to-yellow-300 h-screen flex justify-center items-center p-4">
-    <div id="password-page" class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
-        <h1 class="text-2xl font-semibold text-blue-600 mb-6 text-center">জন্মদিনের শুভেচ্ছা</h1>
-        <form id="password-form" class="space-y-4">
+<body class="bg-gradient-to-r from-pink-400 to-yellow-300 h-screen flex justify-center items-center p-4 overflow-hidden">
+    <div id="password-page" class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full transition-transform hover:scale-105 hover:shadow-lg">
+        <h1 class="text-3xl font-semibold text-blue-600 mb-6 text-center">জন্মদিনের শুভেচ্ছা</h1>
+        <form id="password-form" class="space-y-6">
+            <div class="text-center text-gray-600 text-sm">
+                <p class="mt-2 text-blue-700 font-semibold">বিশেষ বার্তাটি দেখার জন্য নিচে পাসওয়ার্ড দিন</p>
+            </div>
             <div>
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">পাসওয়ার্ড:</label>
-                <input type="password" id="password" name="password" placeholder="পাসওয়ার্ড লিখুন" required
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <div class="relative">
+                    <input type="password" id="password" name="password" placeholder="পাসওয়ার্ড লিখুন" required
+                           class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <div id="password-toggle" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-500">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
                 <p id="password-error" class="text-red-500 text-xs italic mt-1" style="display: none;"></p>
             </div>
-            <button type="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+            <button type="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline w-full transition-colors duration-300">
                 প্রবেশ করুন
             </button>
         </form>
     </div>
 
-    <div id="wish-page" class="bg-white rounded-lg shadow-xl p-6 max-w-lg w-full text-center" style="display: none;">
-        <h2 class="text-3xl font-semibold text-purple-700 mb-4">শুভ জন্মদিন, প্রিয়!</h2>
+    <div id="wish-page" class="bg-white rounded-lg shadow-xl p-6 max-w-lg w-full text-center transition-opacity duration-500" style="display: none;">
+        <h2 class="text-3xl font-semibold text-purple-700 mb-4 animate-pulse">শুভ জন্মদিন, প্রিয় আদ্রিতা! 🥰🥰</h2>
         <p class="text-gray-800 text-lg mb-4">
-            আজ তোমার বিশেষ দিন, এবং আমি খুব আনন্দিত যে এই দিনটি তোমার সাথে ভাগ করতে পারছি।
-            তোমার জীবন আনন্দে এবং শান্তিতে ভরে উঠুক।
+            এই দিনটা তোমার কাছে অনেক গুরুত্বপূর্ণ। এই দিনটা এসেছিল বলেই আমি আজকে তোমাকে দেখতে পেয়েছি।
+             জীবন হোক রঙিন তোমার 
+        </p>
+        <p class="text-gray-800 text-lg mb-4">
+            আজকেরই এই দিনে সবকিছু হউক নতুন করে, সুখের স্মৃতিটুক থাক কাছে দু:খগুলো যাক দুরে। জড়া জীর্ণ অতীতটাকে রেখোনা আর মনে নব উদ্দমে কাজ করো নতুন এই দিনে।অভিমানের মেঘ ভাসিয়ে দাও অনেক দুরে,
+            মন খারাপের দিনটা তোমার না আসুক ফিরে,
+            দুঃখগুলো দাও উড়িয়ে ওই আকাশের নীড়ে,
+            অসীম সুখ বয়ে আসুক তোমার জীবন জুড়ে।
+        </p>
+        <p class="text-gray-800 text-lg mb-4">
+            আর একটা বছর এসে গেল, বেড়ে যাবে আর একটা মোমবাতি।
+            আসুক ফিরে এমন দিন হোক না তোমার সব রঙিন ।।
+        </p>
+        <p class="text-gray-800 text-lg mb-4">
+            ইচ্ছে গুলো পূর্ণ্য হোক সুখের দোলায় দুলে
+            খুশি যত সঙ্গী হোক সর্বদা হেসো প্রাণ খুলে
+            পৃথিবীর শত ভুল আর বেদনা থাকুক আমার
+            শুভ হোক আনন্দের হোক জন্মদিন তোমার
         </p>
         <div class="flex justify-center mb-4">
-            <img src="https://placehold.co/400x300/EEE/31343C" alt="জন্মদিনের শুভেচ্ছা" class="rounded-md max-w-full h-auto">
+            <img src="https://placehold.co/400x300/EEE/31343C" alt="জন্মদিনের শুভেচ্ছা" class="rounded-md max-w-full h-auto rounded-lg shadow-md">
         </div>
         <p class="text-gray-700 italic">
             তোমার আগামী বছরগুলো হাসি, খুশি এবং সাফল্যে ভরে উঠুক। শুভ জন্মদিন!
@@ -48,14 +75,34 @@
         const passwordError = document.getElementById('password-error');
         const passwordPage = document.getElementById('password-page');
         const wishPage = document.getElementById('wish-page');
+        const passwordToggle = document.getElementById('password-toggle');
+        const passwordIcon = passwordToggle.querySelector('svg');
+
+        let passwordVisible = false;
+
+        passwordToggle.addEventListener('click', function() {
+            passwordVisible = !passwordVisible;
+            passwordInput.type = passwordVisible ? 'text' : 'password';
+
+            if (passwordVisible) {
+                passwordIcon.innerHTML = `<path d="M2 2l20 20"/><path d="M7.5 7.5l9 9"/>`;
+            } else {
+                passwordIcon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+            }
+        });
 
         passwordForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const password = passwordInput.value.trim();
 
-            if (password === 'secret') { // এখানে আপনার পাসওয়ার্ড দিন
+            if (password === '123') {
                 passwordPage.style.display = 'none';
                 wishPage.style.display = 'block';
+                // Add fade-in animation
+                setTimeout(() => {
+                    wishPage.style.opacity = '1';
+                }, 100);
+
             } else {
                 passwordError.textContent = 'ভুল পাসওয়ার্ড!';
                 passwordError.style.display = 'block';

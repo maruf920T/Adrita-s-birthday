@@ -151,7 +151,7 @@
                 </p>
             </div>
             <div class="image-container" style="max-width: 80%; flex-grow: 1;">
-                <img id="birthday-image" src="https://placehold.co/600x450/EEE/31343C" alt="জন্মদিনের শুভেচ্ছা" class="rounded-md w-full h-auto">
+                <img id="birthday-image" src="https://i.postimg.cc/TwWJq9PM/Messenger-creation-BEC89049-5-C87-4-B0-F-8181-1-F6-CF148278-C.jpg" alt="জন্মদিনের শুভেচ্ছা" class="rounded-md w-full h-auto">
             </div>
         </div>
     </div>
@@ -168,10 +168,225 @@
 
         let passwordVisible = false;
         let images = [
-            "https://i.postimg.cc/nLSDWQWF/Messenger-creation-92479-CCE-7-DBC-4-BD1-80-F4-E93-FA3195-D57.jpg ",
-            "https://i.postimg.cc/vHC2Jcpv/Messenger-creation-4-C2-CAD79-C991-4-EF9-B8-D5-7-F668-BC81-C59.jpg ",
-            "https://i.postimg.cc/MZvhg2nq/Messenger-creation-509-A376-D-A16-F-4-A77-A559-A298-AF0-B4-B44.jpg ",
-            "https://i.postimg.cc/TwWJq9PM/Messenger-creation-BEC89049-5-C87-4-B0-F-8181-1-F6-CF148278-C.jpg "
+            "https://i.postimg.cc/TwWJq9PM/Messenger-creation-BEC89049-5-C87-4-B0-F-8181-1-F6-CF148278-C.jpg",
+            "https://i.postimg.cc/nLSDWQWF/Messenger-creation-92479-CCE-7-DBC-4-BD1-80-F4-E93-FA3195-D57.jpg",
+            "https://i.postimg.cc/vHC2Jcpv/Messenger-creation-4-C2-CAD79-C991-4-EF9-B8-D5-7-F668-BC81-C59.jpg",
+            "https://i.postimg.cc/MZvhg2nq/Messenger-creation-509-A376-D-A16-F-4-A77-A559-A298-AF0-B4-B44.jpg"
+        ];
+        let imageIndex = 0;
+
+        function changeImage() {
+            imageIndex = (imageIndex + 1) % images.length;
+            birthdayImage.src = images[imageIndex];
+        }
+
+        setInterval(changeImage, 2000);
+
+        passwordToggle.addEventListener('click', function() {
+            passwordVisible = !passwordVisible;
+            passwordInput.type = passwordVisible ? 'text' : 'password';
+
+            if (passwordVisible) {
+                passwordIcon.innerHTML = `<path d="M2 2l20 20"/><path d="M7.5 7.5l9 9"/>`;
+            } else {
+                passwordIcon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+            }
+        });
+
+        passwordForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = passwordInput.value.trim();
+
+            if (password === '123') {
+                passwordPage.style.display = 'none';
+                wishPage.style.display = 'flex';
+                setTimeout(() => {
+                    wishPage.style.opacity = '1';
+                }, 100);
+
+            } else {
+                passwordError.textContent = 'ভুল পাসওয়ার্ড!';
+                passwordError.style.display = 'block';
+                passwordInput.classList.add('border-red-500');
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শুভ জন্মদিন</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        #wish-page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-color: #000;
+        }
+        @media (orientation: landscape) {
+            #wish-page {
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: flex-start;
+            }
+        }
+        #wish-page h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            font-size: 2.5rem;
+            animation: fadeIn 1s ease-in-out, pulse 2s infinite alternate;
+        }
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .message-box p {
+            color: #000;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out, slideIn 0.5s ease-out;
+            animation-fill-mode: forwards;
+            /* White text for message box on black background */
+        }
+
+        .message-box p:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .message-box p:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .message-box p:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        .message-box p:nth-child(4) {
+            animation-delay: 6s;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            animation: fadeIn 1s ease-in-out, slideIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-20px); }
+            to { transform: translateX(0); }
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.06); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-pink-400 to-yellow-300 h-screen flex justify-center items-center p-4 overflow-hidden">
+    <div id="password-page" class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full transition-transform hover:scale-105 hover:shadow-lg">
+        <h1 class="text-3xl font-semibold text-blue-600 mb-6 text-center">জন্মদিনের শুভেচ্ছা</h1>
+        <form id="password-form" class="space-y-6">
+            <div class="text-center text-gray-600 text-sm">
+                <p class="mt-2 text-blue-700 font-semibold">বিশেষ বার্তাটি দেখার জন্য নিচে পাসওয়ার্ড দিন</p>
+            </div>
+            <div>
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">পাসওয়ার্ড:</label>
+                <div class="relative">
+                    <input type="password" id="password" name="password" placeholder="পাসওয়ার্ড লিখুন" required
+                           class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <div id="password-toggle" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-500">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <p id="password-error" class="text-red-500 text-xs italic mt-1" style="display: none;"></p>
+            </div>
+            <button type="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline w-full transition-colors duration-300
+                           active:scale-95 transition-transform duration-200 shadow-lg hover:shadow-xl">
+                প্রবেশ করুন
+            </button>
+        </form>
+    </div>
+
+    <div id="wish-page" class="bg-white rounded-lg shadow-xl p-6 w-full text-center transition-opacity duration-500" style="display: none;">
+        <h2 class="text-3xl font-semibold text-purple-700 mb-4 animate-pulse">শুভ জন্মদিন, প্রিয় আদ্রিতা! 🥰🥰 <br> ভালোবাসি তোমায়</h2>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+            <div class="text-gray-800 text-lg mb-4 md:text-left message-box">
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.2em;">
+                    এই দিনটা তোমার কাছে অনেক গুরুত্বপূর্ণ। এই দিনটা এসেছিল বলেই আমি আজকে তোমাকে দেখতে পেয়েছি।
+                    জীবন হোক রঙিন তোমার।
+                </p>
+                <p>
+                    আজকেরই এই দিনে সবকিছু হউক নতুন করে, সুখের স্মৃতিটুক থাক কাছে দুঃখগুলো যাক দূরে। জীর্ণ অতীতটাকে রেখো না আর মনে, নতুন উদ্যমে কাজ করো নতুন এই দিনে। অভিমানের মেঘ ভাসিয়ে দাও অনেক দূরে,
+                    মন খারাপের দিনটা তোমার না আসুক ফিরে,
+                    দুঃখগুলো দাও উড়িয়ে ওই আকাশের নীড়ে,
+                    অসীম সুখ বয়ে আসুক তোমার জীবন জুড়ে।
+                </p>
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.2em;">
+                    আর একটা বছর এসে গেল, বেড়ে যাবে আর একটা মোমবাতি।
+                    আসুক ফিরে এমন দিন, হোক না তোমার সব রঙিন।
+                </p>
+                <p>
+                    ইচ্ছেগুলো পূর্ণ হোক সুখের দোলায় দুলে,
+                    খুশি যত সঙ্গী হোক সর্বদা হেসো প্রাণ খুলে।
+                    পৃথিবীর শত ভুল আর বেদনা থাকুক আমার,
+                    শুভ হোক, আনন্দের হোক জন্মদিন তোমার।
+                </p>
+            </div>
+            <div class="image-container" style="max-width: 80%; flex-grow: 1;">
+                <img id="birthday-image" src="https://i.postimg.cc/TwWJq9PM/Messenger-creation-BEC89049-5-C87-4-B0-F-8181-1-F6-CF148278-C.jpg" alt="জন্মদিনের শুভেচ্ছা" class="rounded-md w-full h-auto">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const passwordForm = document.getElementById('password-form');
+        const passwordInput = document.getElementById('password');
+        const passwordError = document.getElementById('password-error');
+        const passwordPage = document.getElementById('password-page');
+        const wishPage = document.getElementById('wish-page');
+        const passwordToggle = document.getElementById('password-toggle');
+        const passwordIcon = passwordToggle.querySelector('svg');
+        const birthdayImage = document.getElementById('birthday-image');
+
+        let passwordVisible = false;
+        let images = [
+            "https://i.postimg.cc/TwWJq9PM/Messenger-creation-BEC89049-5-C87-4-B0-F-8181-1-F6-CF148278-C.jpg",
+            "https://i.postimg.cc/nLSDWQWF/Messenger-creation-92479-CCE-7-DBC-4-BD1-80-F4-E93-FA3195-D57.jpg",
+            "https://i.postimg.cc/vHC2Jcpv/Messenger-creation-4-C2-CAD79-C991-4-EF9-B8-D5-7-F668-BC81-C59.jpg",
+            "https://i.postimg.cc/MZvhg2nq/Messenger-creation-509-A376-D-A16-F-4-A77-A559-A298-AF0-B4-B44.jpg"
         ];
         let imageIndex = 0;
 
